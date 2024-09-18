@@ -1,3 +1,8 @@
-# Inbrief
+# React + Vite
 
-Inbrief is a modern news aggregation platform designed to provide users with a personalized and interactive news experience. Users can customize their news feed, engage with content, and explore trending topics from diverse, reputable sources. The platform allows for advanced filtering, bookmarking, user submissions, and more.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
