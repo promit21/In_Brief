@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.js
+
+import React from 'react';
+import { FaArrowRight } from "react-icons/fa";
+import './App.css';
+import { latestNews, businessNews, sportsNews } from './data';
+import NewsCard from './NewsCard';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="bg-gray-100 min-h-screen">
+      {/* Latest News Section */}
+      <div className="container mx-auto p-4">
+        <div className="flex justify-between items-center ">
+          <h2 className="font-bold text-xl mt-8 text-start mb-4">Latest News</h2>
+          <a href="/latest-news" className="flex items-center gap-1 font-bold text-blue-500">
+            View All <FaArrowRight />
+          </a>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {latestNews.map((article, index) => (
+            <NewsCard key={index} article={article} section="Latest News" />
+          ))}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      {/* Business and Sports News Sections */}
+      <div className="container mx-auto p-4">
+        <div className="flex flex-col md:flex-row justify-between mb-4">
+          {/* Business Section */}
+          <div className="w-full md:w-1/2 pr-2 mb-8 md:mb-0">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold">Business</h2>
+              <a href="/business" className="flex items-center gap-1 font-bold text-blue-500">
+                View All <FaArrowRight />
+              </a>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {businessNews.map((article, index) => (
+                <NewsCard key={index} article={article} section="Business" />
+              ))}
+            </div>
+          </div>
+
+          {/* Sports Section */}
+          <div className="w-full md:w-1/2 pl-2">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold">Sports</h2>
+              <a href="/sports" className="flex items-center gap-1 font-bold text-blue-500">
+                View All <FaArrowRight />
+              </a>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {sportsNews.map((article, index) => (
+                <NewsCard key={index} article={article} section="Sports" />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
